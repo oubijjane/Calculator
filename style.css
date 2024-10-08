@@ -1,0 +1,31 @@
+.mainBody {
+    width: 260px;
+    height: 260px;
+    border: 1px solid black;
+    margin: auto;
+}
+.display {
+    width: 250px;
+    height: 30px;
+    border: 1px solid black;
+    margin : 5px auto;
+    text-align: right;
+   line-height: 2.5em;
+}
+.numbres {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    row-gap: 10px;
+    width: 250px;
+    height: 200px;
+    border: 1px solid black;
+    margin : 5px auto;
+}
+button {
+    width: 35px;
+    height: 30px;
+    text-align: center;
+}
