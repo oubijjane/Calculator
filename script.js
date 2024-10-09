@@ -1,6 +1,8 @@
-let firstNumber = 0;
+let firstNumber = " ";
 let temp = 0;
-let secondNumber = 1;
+let secondNumber = " ";
+let clear = false;
+let clearAll = false;
 let sing = "";
 let result = 0;
 const display = document.querySelector(".display");
@@ -15,36 +17,45 @@ div.addEventListener("click", (e) => {
                 if (display.textContent == 0) {
                     display.textContent = "";
                 }
+                if (clear) {
+                    display.textContent = "";
+                    secondNumber = " ";
+                }
+                clear = false;
                 display.textContent += e.target.textContent;
-                firstNumber = e.target.textContent
+                secondNumber += e.target.textContent;
             }
             break;
 
         case "ac":
-            firstNumber = 0;
-            secondNumber = 0;
-            temp = 0;
-            result = 0;
-            display.textContent = result;
+            clearAllVar();
             break;
         case "operation":
-            if (e.target.textContent.includes("=")) {
-                console.log("before ===>" + result + " = " + firstNumber + " " + " " + sing + " " + secondNumber);
-                operations(sing, firstNumber, secondNumber);
-                display.textContent = result;
-                console.log("after ===>" + result + " = " + firstNumber + " " + " " + sing + " " + secondNumber);
-            } else {
-                sing = e.target.textContent
-                display.textContent = "0";
+            if (firstNumber != " ") {
                 operations(sing, firstNumber, secondNumber);
             }
+            firstNumber = secondNumber;
+            sing = e.target.textContent;
+            display.textContent = result;
+            clear = true;
 
             break;
+        case "equals":
+            console.log("before ===>" + result + " = " + firstNumber + " " + " " + sing + " " + secondNumber);
+            operations(sing, firstNumber, secondNumber);
+            display.textContent = result;
+            console.log("after ===>" + result + " = " + firstNumber + " " + " " + sing + " " + secondNumber);
 
     }
 })
 
-
+function clearAllVar() {
+    firstNumber = " ";
+    secondNumber = " ";
+    temp = 0;
+    result = 0;
+    display.textContent = result;
+}
 function add(addend1, addend2) {
     result = parseInt(addend1) + parseInt(addend2);
     secondNumber = result;
@@ -74,6 +85,10 @@ function multiply(Multiplicand, Multiplier) {
 }
 
 function operations(sing, num1, num2) {
+    if (num1 == " " || num2 == " ") {
+        result = "no valid number";
+        return result;
+    }
     switch (sing) {
         case "+":
             add(num1, num2);
