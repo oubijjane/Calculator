@@ -21,7 +21,11 @@ div.addEventListener("click", (e) => {
                     display.textContent = "";
                     secondNumber = " ";
                 }
+                if(clearAll) {
+                    clearAllVar();
+                }
                 clear = false;
+                clearAll = false;
                 display.textContent += e.target.textContent;
                 secondNumber += e.target.textContent;
             }
@@ -38,6 +42,7 @@ div.addEventListener("click", (e) => {
             sing = e.target.textContent;
             display.textContent = result;
             clear = true;
+            clearAll = false;
 
             break;
         case "equals":
@@ -45,6 +50,8 @@ div.addEventListener("click", (e) => {
             operations(sing, firstNumber, secondNumber);
             display.textContent = result;
             console.log("after ===>" + result + " = " + firstNumber + " " + " " + sing + " " + secondNumber);
+            firstNumber = " "
+            clearAll = true;
 
     }
 })
@@ -52,9 +59,9 @@ div.addEventListener("click", (e) => {
 function clearAllVar() {
     firstNumber = " ";
     secondNumber = " ";
-    temp = 0;
     result = 0;
     display.textContent = result;
+    clear = true;
 }
 function add(addend1, addend2) {
     result = parseInt(addend1) + parseInt(addend2);
@@ -105,3 +112,18 @@ function operations(sing, num1, num2) {
     }
     return result;
 };
+div.addEventListener("mouseover",(e) => {
+    console.log(e.target.className);
+    if(e.target.className === "number" ||e.target.className === "equals"  ||e.target.className === "operation"||e.target.className === "ac"||e.target.className === "c") {
+        e.target.style.backgroundColor = "white";
+    }
+})
+div.addEventListener("mouseout",(e) => {
+    console.log(e.target.className);
+    if(e.target.className === "number" ||e.target.className === "equals"||e.target.className === "ac"||e.target.className === "c") {
+        e.target.style.backgroundColor = "rgba(207, 202, 202, 0.801)";
+    }
+    if(e.target.className === "operation" ) {
+        e.target.style.backgroundColor = "rgba(241, 131, 5, 0.801)";
+    }
+})

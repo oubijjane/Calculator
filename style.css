@@ -1,16 +1,19 @@
 .mainBody {
-    width: 260px;
-    height: 260px;
+    width: 350px;
+    height: 500px;
     border: 1px solid black;
     margin: auto;
+    background-color: rgb(20, 31, 43);
 }
 .display {
-    width: 250px;
-    height: 30px;
+    width: 320px;
+    height: 50px;
+    font-size: 30px;
     border: 1px solid black;
     margin : 5px auto;
     text-align: right;
    line-height: 2.5em;
+   background-color: rgba(114, 114, 114, 0.801);
 }
 .numbres {
     display: flex;
@@ -19,13 +22,28 @@
     align-items: center;
     justify-content: center;
     row-gap: 10px;
-    width: 250px;
-    height: 200px;
+    width: 320px;
+    height: 420px;
     border: 1px solid black;
     margin : 5px auto;
+    background-color: rgb(43, 81, 116);
 }
 button {
-    width: 35px;
-    height: 30px;
+    width: 80px;
+    height: 70px;
     text-align: center;
+    background-color:  rgba(207, 202, 202, 0.801);
+}
+#big {
+    width: 200px;
+}
+.group {
+    display: flex;
+    width: 300px;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.operation {
+    background-color:  rgba(241, 131, 5, 0.801);
 }
