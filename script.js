@@ -1,8 +1,8 @@
 let firstNumber = " ";
-let temp = 0;
 let secondNumber = " ";
 let clear = false;
 let clearAll = false;
+secondNumber.ch
 let sing = "";
 let result = 0;
 const display = document.querySelector(".display");
@@ -13,6 +13,7 @@ div.addEventListener("click", (e) => {
         case "number":
             if (!display.textContent.includes(".") && e.target.textContent == ".") {
                 display.textContent += e.target.textContent;
+                secondNumber += e.target.textContent;
             } else if (e.target.textContent !== ".") {
                 if (display.textContent == 0) {
                     display.textContent = "";
@@ -21,7 +22,7 @@ div.addEventListener("click", (e) => {
                     display.textContent = "";
                     secondNumber = " ";
                 }
-                if(clearAll) {
+                if (clearAll) {
                     clearAllVar();
                 }
                 clear = false;
@@ -33,6 +34,10 @@ div.addEventListener("click", (e) => {
 
         case "ac":
             clearAllVar();
+            break;
+        case "c":
+            secondNumber = secondNumber.slice(0, -1);
+            display.textContent = display.textContent.slice(0, -1);
             break;
         case "operation":
             if (firstNumber != " ") {
@@ -59,12 +64,14 @@ div.addEventListener("click", (e) => {
 function clearAllVar() {
     firstNumber = " ";
     secondNumber = " ";
+    sing = "";
     result = 0;
     display.textContent = result;
-    clear = true;
+    clear = false;
+    clearAll = false;
 }
 function add(addend1, addend2) {
-    result = parseInt(addend1) + parseInt(addend2);
+    result = parseFloat(addend1) + parseFloat(addend2);
     secondNumber = result;
 
     return result;
@@ -112,18 +119,16 @@ function operations(sing, num1, num2) {
     }
     return result;
 };
-div.addEventListener("mouseover",(e) => {
-    console.log(e.target.className);
-    if(e.target.className === "number" ||e.target.className === "equals"  ||e.target.className === "operation"||e.target.className === "ac"||e.target.className === "c") {
+div.addEventListener("mouseover", (e) => {
+    if (e.target.className === "number" || e.target.className === "equals" || e.target.className === "operation" || e.target.className === "ac" || e.target.className === "c") {
         e.target.style.backgroundColor = "white";
     }
 })
-div.addEventListener("mouseout",(e) => {
-    console.log(e.target.className);
-    if(e.target.className === "number" ||e.target.className === "equals"||e.target.className === "ac"||e.target.className === "c") {
+div.addEventListener("mouseout", (e) => {
+    if (e.target.className === "number" || e.target.className === "equals" || e.target.className === "ac" || e.target.className === "c") {
         e.target.style.backgroundColor = "rgba(207, 202, 202, 0.801)";
     }
-    if(e.target.className === "operation" ) {
+    if (e.target.className === "operation") {
         e.target.style.backgroundColor = "rgba(241, 131, 5, 0.801)";
     }
 })
