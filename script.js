@@ -67,7 +67,7 @@ function clearAllVar() {
     sing = "";
     result = 0;
     display.textContent = result;
-    clear = false;
+    clear = true;
     clearAll = false;
 }
 function add(addend1, addend2) {
